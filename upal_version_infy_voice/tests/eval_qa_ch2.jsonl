@@ -1,0 +1,18 @@
+{"id": "in01", "type": "in", "lang": "en", "q": "what is the difference between a solute and a solvent", "gold": ["solute", "solvent"]}
+{"id": "in02", "type": "in", "lang": "en", "q": "when can a solution not dissolve any more sugar", "gold": ["saturated"]}
+{"id": "in03", "type": "in", "lang": "en", "q": "does hot water dissolve more salt than cold water", "gold": ["temperature", "solubility"]}
+{"id": "in04", "type": "in", "lang": "en", "q": "why do fish struggle when water gets warmer", "gold": ["gas", "oxygen", "solubility"]}
+{"id": "in05", "type": "in", "lang": "en", "q": "how do we calculate density of an object", "gold": ["mass", "volume", "density"]}
+{"id": "in06", "type": "in", "lang": "en", "q": "why does an iron nail sink but a wooden block floats", "gold": ["dense", "density", "float"]}
+{"id": "in07", "type": "in", "lang": "en", "q": "what is relative density and does it have units", "gold": ["relative density"]}
+{"id": "in08", "type": "in", "lang": "en", "q": "what is the SI unit of density", "gold": ["kg/m", "si unit"]}
+{"id": "hi01", "type": "in", "lang": "hi", "q": "विलयन क्या होता है", "gold": ["solution"]}
+{"id": "hi02", "type": "in", "lang": "hi", "q": "नमक पानी में क्यों घुलता है", "gold": ["salt", "dissolve", "solvent"]}
+{"id": "hi03", "type": "in", "lang": "hi", "q": "घनत्व कैसे निकालते हैं", "gold": ["density", "mass", "volume"]}
+{"id": "out01", "type": "out", "lang": "en", "q": "what is the capital of Japan", "gold": []}
+{"id": "out02", "type": "out", "lang": "en", "q": "how do cyclones form over the ocean", "gold": []}
+{"id": "out03", "type": "out", "lang": "en", "q": "what do decomposers do in a food web", "gold": []}
+{"id": "out04", "type": "out", "lang": "en", "q": "how do I simplify the ratio twelve to eighteen", "gold": []}
+{"id": "out05", "type": "out", "lang": "en", "q": "who invented the telephone", "gold": []}
+{"id": "wp01", "type": "premise", "lang": "en", "q": "gases dissolve better in hot water right", "gold": ["gas", "decrease", "solubility"]}
+{"id": "wp02", "type": "premise", "lang": "en", "q": "heavy objects always sink no matter what", "gold": ["dense", "density", "float"]}

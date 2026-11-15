@@ -1,0 +1,30 @@
+# render.yaml — Render blueprint for the Infy Voice demo.
+# Lives at the repo root (Render reads blueprints from here); the app itself
+# sits in upal_version_infy_voice/, which is what rootDir points at.
+#
+# Sizing note: the local GGUF model (~2.5GB) does not fit on Render
+# free/entry plans — this runs the Gemini paths: VOICE_MODE=live plus
+# LLM_PROVIDER=gemini as cascade fallback. No model download needed.
+# The SQLite DB is seeded on first boot by the start command.
+services:
+  - type: web
+    name: infy-voice
+    runtime: python
+    plan: free
+    rootDir: upal_version_infy_voice
+    buildCommand: "cd frontend && npm ci && npm run build && cd .. && pip install -r requirements-render.txt"
+    startCommand: "test -f varad.db || python seed_db.py; python backend.py"
+    healthCheckPath: /api/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: VOICE_MODE
+        value: live
+      - key: LLM_PROVIDER
+        value: gemini
+      - key: TTS_PROVIDER
+        value: edge
+      - key: LIVE_MAX_SESSION_MINUTES
+        value: "10"
+      - key: PYTHON_VERSION
+        value: "3.13.1"

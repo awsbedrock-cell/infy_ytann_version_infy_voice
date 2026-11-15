@@ -1,0 +1,30 @@
+{"id": "in01", "type": "in", "lang": "en", "q": "why does air move from one place to another", "gold": ["pressure"]}
+{"id": "in02", "type": "in", "lang": "en", "q": "what makes the wind blow faster", "gold": ["pressure difference", "difference in pressure", "speed"]}
+{"id": "in03", "type": "in", "lang": "en", "q": "what happens to air when it gets heated", "gold": ["expand", "rises", "warm air", "hot air"]}
+{"id": "in04", "type": "in", "lang": "en", "q": "how does a cyclone get its energy", "gold": ["warm", "moist", "ocean", "water vapour", "water vapor"]}
+{"id": "in05", "type": "in", "lang": "en", "q": "what is the calm centre of a cyclone called", "gold": ["eye"]}
+{"id": "in06", "type": "in", "lang": "en", "q": "why do coastal areas get flooded during cyclones", "gold": ["storm surge", "surge", "sea water", "flood"]}
+{"id": "in07", "type": "in", "lang": "en", "q": "how do thunderstorms form", "gold": ["thunderstorm"]}
+{"id": "in08", "type": "in", "lang": "en", "q": "what safety steps should we take before a cyclone arrives", "gold": ["safety", "warning", "shelter", "precaution"]}
+{"id": "in09", "type": "in", "lang": "en", "q": "does air push on things around us", "gold": ["air pressure", "exerts pressure", "air exerts"]}
+{"id": "in10", "type": "in", "lang": "en", "q": "why does a balloon get bigger when you blow into it", "gold": ["balloon"]}
+{"id": "in11", "type": "in", "lang": "en", "q": "what instrument measures wind speed", "gold": ["anemometer"]}
+{"id": "in12", "type": "in", "lang": "en", "q": "how are cyclones tracked and predicted", "gold": ["satellite", "radar", "meteorolog", "forecast", "warning"]}
+{"id": "hi01", "type": "in", "lang": "hi", "q": "हवा का दबाव क्या होता है", "gold": ["pressure"]}
+{"id": "hi02", "type": "in", "lang": "hi", "q": "चक्रवात कैसे बनते हैं", "gold": ["cyclone"]}
+{"id": "hi03", "type": "in", "lang": "hi", "q": "हवा क्यों चलती है", "gold": ["pressure", "wind"]}
+{"id": "hi04", "type": "in", "lang": "hi", "q": "गरम हवा ऊपर क्यों जाती है", "gold": ["warm air", "hot air", "rises", "expand"]}
+{"id": "hi05", "type": "in", "lang": "hi", "q": "तूफ़ान से बचने के लिए क्या करना चाहिए", "gold": ["safety", "shelter", "warning", "precaution"]}
+{"id": "hi06", "type": "in", "lang": "hi", "q": "चक्रवात की आँख क्या होती है", "gold": ["eye"]}
+{"id": "out01", "type": "out", "lang": "en", "q": "what is the capital of France", "gold": []}
+{"id": "out02", "type": "out", "lang": "en", "q": "who wrote the national anthem of India", "gold": []}
+{"id": "out03", "type": "out", "lang": "en", "q": "how do I solve a quadratic equation", "gold": []}
+{"id": "out04", "type": "out", "lang": "en", "q": "what is photosynthesis in plants", "gold": []}
+{"id": "out05", "type": "out", "lang": "en", "q": "how does salt dissolve in water", "gold": []}
+{"id": "out06", "type": "out", "lang": "en", "q": "what is the ratio of boys to girls in a class of thirty", "gold": []}
+{"id": "out07", "type": "out", "lang": "en", "q": "who won the cricket world cup", "gold": []}
+{"id": "out08", "type": "out", "lang": "hi", "q": "भारत की राजधानी क्या है", "gold": []}
+{"id": "wp01", "type": "premise", "lang": "en", "q": "winds blow from low pressure to high pressure right", "gold": ["pressure"]}
+{"id": "wp02", "type": "premise", "lang": "en", "q": "cyclones get stronger when they reach land", "gold": ["land", "weaken", "lose"]}
+{"id": "wp03", "type": "premise", "lang": "en", "q": "hot air is heavier so it sinks", "gold": ["warm air", "hot air", "rises", "lighter"]}
+{"id": "wp04", "type": "premise", "lang": "en", "q": "air has no weight so it cannot exert pressure", "gold": ["air pressure", "exerts", "weight"]}

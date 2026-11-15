@@ -1,0 +1,104 @@
+:root { --purple:#7c3aed; --purple-d:#6d28d9; --bg:#faf5ff; --ink:#1e1b2e;
+        --green:#059669; --amber:#b45309; }
+* { box-sizing:border-box; margin:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+header { background:linear-gradient(135deg,#7c3aed,#a78bfa); color:#fff; padding:18px 24px; }
+header h1 { font-size:19px; }
+header p  { opacity:.85; font-size:13px; margin-top:3px; }
+main { max-width:760px; margin:0 auto; padding:14px 16px 150px; }
+.card { background:#fff; border-radius:14px; padding:16px; margin-bottom:14px;
+        box-shadow:0 1px 4px rgba(60,20,120,.08); }
+
+/* tabs */
+.tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; position:sticky; top:0;
+        background:var(--bg); padding:8px 0; z-index:5; }
+.tabs button { border:1px solid #e5ddf5; background:#fff; color:var(--purple-d);
+               padding:8px 14px; border-radius:999px; font-size:13px; cursor:pointer; }
+.tabs button.on { background:var(--purple); color:#fff; border-color:var(--purple); }
+
+/* read tab */
+.pgimg { width:100%; border-radius:10px; margin:10px 0; border:1px solid #eee; }
+.pgno  { font-size:11px; color:#999; margin-top:14px; }
+.blk-p { margin:9px 0; font-size:15px; line-height:1.65; }
+.blk-h { font-size:16px; font-weight:700; color:var(--purple-d); margin:14px 0 6px; }
+.blk-q { margin:8px 0 8px 14px; font-size:14px; color:#444; }
+.blk-act,.blk-tbl { margin:10px 0; padding:10px 12px; border-radius:10px;
+                    font-size:14px; background:#f3ecfd; border-left:3px solid var(--purple); }
+.blk-tbl { background:#ecfdf5; border-color:var(--green); }
+.blk-fig { margin:8px 0; font-size:12.5px; color:#777; font-style:italic; text-align:center; }
+
+/* lists */
+.kp { margin:8px 0 8px 18px; font-size:14.5px; line-height:1.55; }
+.fact { margin:10px 0; padding:12px; border-radius:10px; background:#fdf6e3;
+        font-size:14px; border-left:3px solid var(--amber); }
+
+/* qa */
+.qa-filter { width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:10px;
+             font-size:14px; margin-bottom:10px; }
+details.qa { border-bottom:1px solid #f0eaf8; padding:8px 0; }
+details.qa summary { font-size:14px; cursor:pointer; color:#333; }
+details.qa p { margin:8px 0 4px 14px; font-size:14px; color:#555; line-height:1.55; }
+
+/* quiz */
+.quiz-q { font-size:15px; font-weight:600; margin:12px 0 8px; }
+.quiz-opt { display:block; width:100%; text-align:left; margin:6px 0; padding:10px 12px;
+            border:1px solid #ddd; border-radius:10px; background:#fff; font-size:14px; cursor:pointer; }
+.quiz-opt.right { background:#ecfdf5; border-color:var(--green); }
+.quiz-opt.wrong { background:#fef2f2; border-color:#dc2626; }
+.quiz-opt:disabled { cursor:default; }
+.quiz-ex { font-size:13px; color:#555; margin:4px 0 10px 6px; }
+.quiz-score { text-align:center; font-size:15px; font-weight:600; margin-top:14px; }
+
+/* flashcards */
+.fc { perspective:800px; margin:12px auto; width:100%; max-width:420px; height:150px; cursor:pointer; }
+.fc-in { position:relative; width:100%; height:100%; transition:transform .45s;
+         transform-style:preserve-3d; }
+.fc.flip .fc-in { transform:rotateX(180deg); }
+.fc-f,.fc-b { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+              border-radius:14px; padding:18px; text-align:center; font-size:17px;
+              backface-visibility:hidden; }
+.fc-f { background:linear-gradient(135deg,#7c3aed,#a78bfa); color:#fff; }
+.fc-b { background:#fff; border:2px solid var(--purple); transform:rotateX(180deg); font-size:15px; }
+.fc-nav { display:flex; gap:10px; justify-content:center; }
+.fc-nav button { padding:8px 18px; border:none; border-radius:10px; background:var(--purple);
+                 color:#fff; cursor:pointer; }
+.fc-count { text-align:center; font-size:12px; color:#888; margin-top:8px; }
+
+/* <Infy /> — self-contained voice component (src/infy/) */
+.infy { background:#fff; padding:10px 16px; }
+.infy-docked { position:fixed; left:0; right:0; bottom:0; z-index:10;
+        border-top:1px solid #e8defa; box-shadow:0 -2px 12px rgba(60,20,120,.10);
+        padding-bottom:calc(10px + env(safe-area-inset-bottom)); }
+.infy-row { max-width:760px; margin:0 auto; display:flex; align-items:center; gap:12px; }
+.infy-orb { width:64px; height:64px; min-width:64px; border-radius:50%; border:none; cursor:pointer;
+       background:var(--purple); color:#fff; font-size:24px; transition:background .2s,transform .15s; }
+.infy-orb.on   { background:#dc2626; animation:infy-pulse 1.4s infinite; }
+.infy-orb.busy { background:var(--amber); }
+@keyframes infy-pulse { 50% { transform:scale(1.08); } }
+.infy-status { font-size:13px; color:#666; flex:1; display:flex; align-items:center; gap:8px; }
+/* visible state pill — the "paused" state was easy to miss */
+.infy-state { font-size:11px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.4px; padding:2px 8px; border-radius:999px;
+  background:#e5e7eb; color:#4b5563; }
+.infy-state-listening { background:#dcfce7; color:#166534; }
+.infy-state-speaking  { background:#ede9fe; color:var(--purple-d); }
+.infy-state-thinking  { background:#fef3c7; color:#92400e; }
+.infy-state-stopped   { background:#fee2e2; color:#991b1b; }
+.infy-state-error     { background:#fee2e2; color:#991b1b; }
+.infy-state-connecting{ background:#e0e7ff; color:#3730a3; }
+.infy-speaking .infy-status { color:var(--purple-d); }
+.infy-error .infy-status { color:#dc2626; }
+.infy-log { max-height:110px; overflow:auto; font-size:13.5px; max-width:760px; margin:6px auto 0; }
+.infy-msg { margin:7px 0; }
+.infy-msg.you { text-align:right; color:var(--purple-d); }
+.infy-who { font-size:10.5px; color:#999; }
+.infy-ask { display:flex; gap:8px; max-width:760px; margin:8px auto 0; }
+.infy-askText { flex:1; padding:9px 12px; border:1px solid #ddd; border-radius:10px; font-size:14px; }
+.infy-askBtn  { padding:9px 16px; border:none; border-radius:10px; background:var(--purple);
+           color:#fff; cursor:pointer; }
+.infy-cmds { font-size:11.5px; color:#999; text-align:center; margin-top:6px; }
+.infy-lang { display:flex; gap:4px; }  
+.infy-lang button { padding:3px 8px; border:1px solid #ddd; border-radius:8px; background:#fff; cursor:pointer; font-size:12px; }  
+.infy-lang button.on { background:var(--purple); color:#fff; border-color:var(--purple); }  
+.infy-src { font-size:11px; color:#888; font-style:italic; }  
+.chapter-pick { margin-top:8px; padding:8px 10px; border:1px solid #ddd; border-radius:10px; font-size:13.5px; max-width:640px; width:100%%; }  

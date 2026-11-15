@@ -1,0 +1,10 @@
+# requirements-render.txt — minimal deps for the Render deploy.
+# The cloud service runs the Gemini path (VOICE_MODE=live / LLM_PROVIDER=gemini),
+# so llama-cpp-python (compiles >8GB RAM, OOMs the build) and pytest are excluded.
+fastapi
+uvicorn
+python-dotenv
+httpx
+edge-tts
+websockets
+huggingface_hub

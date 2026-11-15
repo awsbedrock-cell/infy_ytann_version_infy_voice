@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-dotenv
+httpx
+edge-tts
+pytest
+websockets
+llama-cpp-python
+huggingface_hub
+# GPU acceleration (NVIDIA + CUDA build of llama-cpp-python; skip on CPU-only machines)
+nvidia-cublas-cu12; sys_platform == "win32"
+nvidia-cuda-runtime-cu12; sys_platform == "win32"
+nvidia-cuda-nvrtc-cu12; sys_platform == "win32"

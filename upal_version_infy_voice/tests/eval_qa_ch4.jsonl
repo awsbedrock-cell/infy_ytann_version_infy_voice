@@ -1,0 +1,18 @@
+{"id": "in01", "type": "in", "lang": "en", "q": "what does a ratio compare", "gold": ["ratio", "compare"]}
+{"id": "in02", "type": "in", "lang": "en", "q": "what are the two numbers in a ratio called", "gold": ["term"]}
+{"id": "in03", "type": "in", "lang": "en", "q": "how do I simplify a ratio", "gold": ["hcf", "highest common factor", "divide"]}
+{"id": "in04", "type": "in", "lang": "en", "q": "how can I check whether two ratios are in proportion", "gold": ["cross", "proportion"]}
+{"id": "in05", "type": "in", "lang": "en", "q": "what does the double colon symbol mean", "gold": ["::", "proportion"]}
+{"id": "in06", "type": "in", "lang": "en", "q": "how do you find a missing fourth value when three are known", "gold": ["rule of three", "unknown", "cross"]}
+{"id": "in07", "type": "in", "lang": "en", "q": "if I add the same number to both terms is the ratio still the same", "gold": ["add", "change", "proportional"]}
+{"id": "in08", "type": "in", "lang": "en", "q": "if 3 pens cost 30 rupees how much do 5 pens cost", "gold": ["cost", "rupee", "proportion"]}
+{"id": "hi01", "type": "in", "lang": "hi", "q": "अनुपात क्या होता है", "gold": ["ratio"]}
+{"id": "hi02", "type": "in", "lang": "hi", "q": "समानुपात कैसे जाँचते हैं", "gold": ["proportion"]}
+{"id": "hi03", "type": "in", "lang": "hi", "q": "अनुपात को सरल कैसे करें", "gold": ["ratio", "simplif", "hcf"]}
+{"id": "out01", "type": "out", "lang": "en", "q": "what is the capital of Japan", "gold": []}
+{"id": "out02", "type": "out", "lang": "en", "q": "how do cyclones form over the ocean", "gold": []}
+{"id": "out03", "type": "out", "lang": "en", "q": "what do decomposers do in a food web", "gold": []}
+{"id": "out04", "type": "out", "lang": "en", "q": "why do iron nails sink in water", "gold": []}
+{"id": "out05", "type": "out", "lang": "en", "q": "who invented the telephone", "gold": []}
+{"id": "wp01", "type": "premise", "lang": "en", "q": "adding 2 to both terms of a ratio keeps it the same", "gold": ["change", "add", "proportional"]}
+{"id": "wp02", "type": "premise", "lang": "en", "q": "the ratio 2 to 3 is the same as 3 to 2", "gold": ["order", "ratio"]}

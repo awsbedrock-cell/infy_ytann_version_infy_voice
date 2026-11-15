@@ -1,0 +1,18 @@
+node_modules/
+__pycache__/
+*.log
+.env
+*.pyc
+models/  
+tests/e2e/audio/
+tests/e2e/chrome-profile-*/
+tests/e2e/result_*.json
+
+# local test artifacts
+tests/e2e/utterances/
+tests/e2e/results/
+tests/e2e/chrome-profile-*/
+tests/e2e/loopback_*.txt
+tests/ws_turns_*.txt
+tests/bench_ttft_*.jsonl
+tests/rag_audit_out.json

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Varad Learn — Voice Chapter</title>
+<style>
+  :root { --purple:#7c3aed; --purple-d:#6d28d9; --bg:#faf5ff; --ink:#1e1b2e;
+          --green:#059669; --amber:#b45309; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:linear-gradient(135deg,#7c3aed,#a78bfa); color:#fff; padding:18px 24px; }
+  header h1 { font-size:19px; }
+  header p  { opacity:.85; font-size:13px; margin-top:3px; }
+  main { max-width:760px; margin:0 auto; padding:14px 16px 150px; }
+  .card { background:#fff; border-radius:14px; padding:16px; margin-bottom:14px;
+          box-shadow:0 1px 4px rgba(60,20,120,.08); }
+
+  /* tabs */
+  .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; position:sticky; top:0;
+          background:var(--bg); padding:8px 0; z-index:5; }
+  .tabs button { border:1px solid #e5ddf5; background:#fff; color:var(--purple-d);
+                 padding:8px 14px; border-radius:999px; font-size:13px; cursor:pointer; }
+  .tabs button.on { background:var(--purple); color:#fff; border-color:var(--purple); }
+
+  /* read tab */
+  .pgimg { width:100%; border-radius:10px; margin:10px 0; border:1px solid #eee; }
+  .pgno  { font-size:11px; color:#999; margin-top:14px; }
+  .blk-p { margin:9px 0; font-size:15px; line-height:1.65; }
+  .blk-h { font-size:16px; font-weight:700; color:var(--purple-d); margin:14px 0 6px; }
+  .blk-q { margin:8px 0 8px 14px; font-size:14px; color:#444; }
+  .blk-act,.blk-tbl { margin:10px 0; padding:10px 12px; border-radius:10px;
+                      font-size:14px; background:#f3ecfd; border-left:3px solid var(--purple); }
+  .blk-tbl { background:#ecfdf5; border-color:var(--green); }
+  .blk-fig { margin:8px 0; font-size:12.5px; color:#777; font-style:italic; text-align:center; }
+
+  /* lists */
+  .kp { margin:8px 0 8px 18px; font-size:14.5px; line-height:1.55; }
+  .fact { margin:10px 0; padding:12px; border-radius:10px; background:#fdf6e3;
+          font-size:14px; border-left:3px solid var(--amber); }
+
+  /* qa */
+  #qaFilter { width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:10px;
+              font-size:14px; margin-bottom:10px; }
+  details.qa { border-bottom:1px solid #f0eaf8; padding:8px 0; }
+  details.qa summary { font-size:14px; cursor:pointer; color:#333; }
+  details.qa p { margin:8px 0 4px 14px; font-size:14px; color:#555; line-height:1.55; }
+
+  /* quiz */
+  .quiz-q { font-size:15px; font-weight:600; margin:12px 0 8px; }
+  .quiz-opt { display:block; width:100%; text-align:left; margin:6px 0; padding:10px 12px;
+              border:1px solid #ddd; border-radius:10px; background:#fff; font-size:14px; cursor:pointer; }
+  .quiz-opt.right { background:#ecfdf5; border-color:var(--green); }
+  .quiz-opt.wrong { background:#fef2f2; border-color:#dc2626; }
+  .quiz-ex { font-size:13px; color:#555; margin:4px 0 10px 6px; display:none; }
+  #quizScore { text-align:center; font-size:15px; font-weight:600; margin-top:14px; display:none; }
+
+  /* flashcards */
+  .fc { perspective:800px; margin:12px auto; width:100%; max-width:420px; height:150px; cursor:pointer; }
+  .fc-in { position:relative; width:100%; height:100%; transition:transform .45s;
+           transform-style:preserve-3d; }
+  .fc.flip .fc-in { transform:rotateX(180deg); }
+  .fc-f,.fc-b { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+                border-radius:14px; padding:18px; text-align:center; font-size:17px;
+                backface-visibility:hidden; }
+  .fc-f { background:linear-gradient(135deg,#7c3aed,#a78bfa); color:#fff; }
+  .fc-b { background:#fff; border:2px solid var(--purple); transform:rotateX(180deg); font-size:15px; }
+  .fc-nav { display:flex; gap:10px; justify-content:center; }
+  .fc-nav button { padding:8px 18px; border:none; border-radius:10px; background:var(--purple);
+                   color:#fff; cursor:pointer; }
+  #fcCount { text-align:center; font-size:12px; color:#888; margin-top:8px; }
+
+  /* voice dock */
+  #dock { position:fixed; left:0; right:0; bottom:0; background:#fff;
+          border-top:1px solid #e8defa; box-shadow:0 -2px 12px rgba(60,20,120,.10);
+          padding:10px 16px calc(10px + env(safe-area-inset-bottom)); z-index:10; }
+  #dock .row { max-width:760px; margin:0 auto; display:flex; align-items:center; gap:12px; }
+  #orb { width:64px; height:64px; min-width:64px; border-radius:50%; border:none; cursor:pointer;
+         background:var(--purple); color:#fff; font-size:24px; transition:background .2s,transform .15s; }
+  #orb.on   { background:#dc2626; animation:pulse 1.4s infinite; }
+  #orb.busy { background:var(--amber); }
+  @keyframes pulse { 50% { transform:scale(1.08); } }
+  #status { font-size:13px; color:#666; flex:1; }
+  #dockLog { max-height:110px; overflow:auto; font-size:13.5px; max-width:760px; margin:6px auto 0; }
+  #dockLog .msg { margin:7px 0; }
+  #dockLog .you { text-align:right; color:var(--purple-d); }
+  #dockLog .who { font-size:10.5px; color:#999; }
+  #askRow { display:flex; gap:8px; max-width:760px; margin:8px auto 0; }
+  #askText { flex:1; padding:9px 12px; border:1px solid #ddd; border-radius:10px; font-size:14px; }
+  #askBtn  { padding:9px 16px; border:none; border-radius:10px; background:var(--purple);
+             color:#fff; cursor:pointer; }
+  .cmds { font-size:11.5px; color:#999; text-align:center; margin-top:6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="chTitle">Varad Learn</h1>
+  <p id="chSub">voice chapter demo</p>
+</header>
+<main>
+  <div class="tabs" id="tabs"></div>
+  <div id="pane"></div>
+</main>
+
+<div id="dock">
+  <div class="row">
+    <button id="orb" title="Talk to Infy">🎤</button>
+    <div id="status">tap the mic and ask a question — or browse the chapter above</div>
+  </div>
+  <div id="dockLog"></div>
+  <div id="askRow">
+    <input id="askText" placeholder="or type a question… e.g. how are winds formed?">
+    <button id="askBtn">Ask</button>
+  </div>
+  <div class="cmds">say <b>stop</b>, <b>pause</b>, <b>resume</b> — or just talk over Infy to interrupt</div>
+</div>
+
+<script src="chapter.js?v=3"></script>
+<script src="live.js?v=3"></script>
+<script>
+const ch = window.CHAPTER;
+// live.js globals (mintTutor, LiveSession, capturePcm, PcmPlayer, LIVE_API, SETUP)
+// are already in scope — do NOT redeclare them here or the whole script dies.
+if (!ch) document.getElementById("chSub").textContent = "chapter.js failed to load — hard refresh (Ctrl+Shift+R)";
+else if (!window.LiveKit) document.getElementById("chSub").textContent = "live.js failed to load — hard refresh (Ctrl+Shift+R)";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+if (ch) {
+  document.getElementById("chTitle").textContent = ch.title;
+  document.getElementById("chSub").textContent =
+    `${ch.subject} · Grade ${ch.grade} · ${ch.pages.length} pages · ${ch.quiz.length} quiz · ${ch.flashcards.length} flashcards`;
+}
+
+/* ============================== tabs =================================== */
+const pane = document.getElementById("pane");
+const tabsEl = document.getElementById("tabs");
+const TABS = [
+  ["read","📖 Read"], ["points","✅ Key Points"], ["ask","💬 Q&A"],
+  ["quiz","📝 Quiz"], ["cards","🃏 Flashcards"], ["facts","✨ Fun Facts"],
+];
+let activeTab = "read";
+TABS.forEach(([id,label]) => {
+  const b = document.createElement("button");
+  b.textContent = label; b.dataset.t = id;
+  b.onclick = () => { activeTab = id; render(); };
+  tabsEl.appendChild(b);
+});
+
+function render() {
+  tabsEl.querySelectorAll("button").forEach(b =>
+    b.classList.toggle("on", b.dataset.t === activeTab));
+  ({ read: rRead, points: rPoints, ask: rAsk, quiz: rQuiz,
+     cards: rCards, facts: rFacts })[activeTab]();
+}
+
+/* ---- Read: every textbook page, scanned image + text blocks ------------- */
+function rRead() {
+  pane.innerHTML = ch.pages.map(p => `
+    <div class="card">
+      ${p.image ? `<img class="pgimg" src="${esc(p.image)}" alt="page ${p.page}" loading="lazy">` : ""}
+      ${p.blocks.map(b => ({
+        paragraph:`<p class="blk-p">${esc(b.text)}</p>`,
+        heading:  `<p class="blk-h">${esc(b.text)}</p>`,
+        question: `<p class="blk-q">${esc(b.text)}</p>`,
+        activity: `<div class="blk-act">🧪 ${esc(b.text)}</div>`,
+        table:    `<div class="blk-tbl">📊 ${esc(b.text)}</div>`,
+        figure:   `<p class="blk-fig">🖼 ${esc(b.text)}</p>`,
+      })[b.type] || `<p class="blk-p">${esc(b.text)}</p>`).join("")}
+      <div class="pgno">— page ${p.page} —</div>
+    </div>`).join("");
+}
+
+/* ---- Key points --------------------------------------------------------- */
+function rPoints() {
+  pane.innerHTML = `<div class="card">` +
+    ch.key_points.map(k => `<p class="kp">• ${esc(typeof k === "string" ? k : k.text)}</p>`).join("") +
+    `</div>`;
+}
+
+/* ---- Ask Q&A bank (233 real pairs, filterable) -------------------------- */
+function rAsk() {
+  pane.innerHTML = `<div class="card">
+      <input id="qaFilter" placeholder="filter ${ch.ask_qa.length} questions… e.g. winds, cyclone, pressure">
+      <div id="qaList"></div>
+    </div>`;
+  const list = document.getElementById("qaList");
+  const draw = (f) => {
+    const rows = ch.ask_qa.filter(q =>
+      !f || (q.q + " " + q.a).toLowerCase().includes(f));
+    list.innerHTML = (rows.length ? rows : [{q:"No match in this chapter",a:""}])
+      .slice(0, 80)
+      .map(q => `<details class="qa"><summary>${esc(q.q)}</summary><p>${esc(q.a)}</p></details>`).join("")
+      + (rows.length > 80 ? `<p class="kp">…and ${rows.length-80} more — type to filter</p>` : "");
+  };
+  draw("");
+  document.getElementById("qaFilter").oninput = e => draw(e.target.value.trim().toLowerCase());
+}
+
+/* ---- Quiz: interactive MCQs --------------------------------------------- */
+let quizDone = {};
+function rQuiz() {
+  pane.innerHTML = `<div class="card">` + ch.quiz.map((q,i) => `
+      <div class="quiz-q">${i+1}. ${esc(q.q)}</div>
+      ${q.options.map((o,j) => `<button class="quiz-opt" data-q="${i}" data-o="${j}">${esc(o)}</button>`).join("")}
+      <p class="quiz-ex" id="ex${i}">${esc(q.explain)}</p>`).join("") +
+    `<div id="quizScore"></div></div>`;
+  pane.querySelectorAll(".quiz-opt").forEach(btn => btn.onclick = () => {
+    const qi = +btn.dataset.q, oi = +btn.dataset.o;
+    if (quizDone[qi] !== undefined) return;
+    quizDone[qi] = oi;
+    const right = ch.quiz[qi].answer;
+    pane.querySelectorAll(`.quiz-opt[data-q="${qi}"]`).forEach(b => {
+      const j = +b.dataset.o;
+      if (j === right) b.classList.add("right");
+      else if (j === oi) b.classList.add("wrong");
+    });
+    document.getElementById("ex"+qi).style.display = "block";
+    const done = Object.keys(quizDone).length;
+    if (done === ch.quiz.length) {
+      const score = ch.quiz.filter((q,i) => quizDone[i] === q.answer).length;
+      const s = document.getElementById("quizScore");
+      s.style.display = "block";
+      s.textContent = `Score: ${score} / ${ch.quiz.length}` +
+        (score === ch.quiz.length ? " 🎉" : score >= 8 ? " — well done!" : " — revise and retry");
+    }
+  });
+}
+
+/* ---- Flashcards ---------------------------------------------------------- */
+let fcIdx = 0;
+function rCards() {
+  pane.innerHTML = `<div class="card">
+      <div class="fc" id="fc"><div class="fc-in">
+        <div class="fc-f" id="fcF"></div><div class="fc-b" id="fcB"></div>
+      </div></div>
+      <div class="fc-nav">
+        <button id="fcPrev">← prev</button><button id="fcNext">next →</button>
+      </div>
+      <div id="fcCount"></div>
+    </div>`;
+  const show = () => {
+    const c = ch.flashcards[fcIdx];
+    document.getElementById("fcF").textContent = c.front;
+    document.getElementById("fcB").textContent = c.back;
+    document.getElementById("fc").classList.remove("flip");
+    document.getElementById("fcCount").textContent = `${fcIdx+1} / ${ch.flashcards.length} — tap card to flip`;
+  };
+  document.getElementById("fc").onclick = e => e.currentTarget.classList.toggle("flip");
+  document.getElementById("fcPrev").onclick = () => { fcIdx = (fcIdx-1+ch.flashcards.length)%ch.flashcards.length; show(); };
+  document.getElementById("fcNext").onclick = () => { fcIdx = (fcIdx+1)%ch.flashcards.length; show(); };
+  show();
+}
+
+/* ---- Fun facts ----------------------------------------------------------- */
+function rFacts() {
+  pane.innerHTML = `<div class="card">` +
+    ch.fun_facts.map(f => `<div class="fact">💡 ${esc(f)}</div>`).join("") + `</div>`;
+}
+
+if (ch) render();
+
+/* ==================== live voice (real Gemini socket) =================== */
+const orb = document.getElementById("orb");
+const statusEl = document.getElementById("status");
+const log = document.getElementById("dockLog");
+const askText = document.getElementById("askText");
+const say = (kind, text) => {
+  const d = document.createElement("div");
+  d.className = "msg " + kind;
+  d.innerHTML = `<div class="who">${kind === "you" ? "You" : "Infy"}</div>${esc(text)}`;
+  log.appendChild(d); log.scrollTop = log.scrollHeight;
+};
+
+let live = null;
+
+async function startLive() {
+  orb.classList.add("busy"); statusEl.textContent = "minting token…";
+  try {
+    const info = await mintTutor(LIVE_API, ch.id);
+    const player = new PcmPlayer(24000);
+    const session = new LiveSession({
+      onReady() {
+        statusEl.textContent = "listening — speak";
+        if (info.greeting) session.sendText(info.greeting);
+      },
+      onAudio: (b64) => player.push(b64),
+      onInterrupted() { player.interrupt(); statusEl.textContent = "interrupted — listening"; },
+      onInputText: (t) => statusEl.textContent = "…" + t.slice(-60),
+      onUserSpeechDone: () => statusEl.textContent = "thinking…",
+      onOutputText: (t) => say("bot", t),
+      onTurnComplete: () => statusEl.textContent = "listening — speak",
+      onError: (e) => statusEl.textContent = "socket error: " + e,
+      onClose: (code) => { stopLive(); statusEl.textContent = `session ended (${code})`; },
+    });
+    const url = `${info.ws_url}${info.ws_url.includes("?") ? "&" : "?"}access_token=${encodeURIComponent(info.token)}`;
+    session.connect(url, {
+      model: info.model, voice: info.voice,
+      systemInstruction: info.system_instruction,
+      vad: SETUP.vad, activityHandling: SETUP.activityHandling,
+      resumption: SETUP.resumption, transcription: SETUP.transcription,
+    });
+    const mic = await capturePcm((b64) => session.sendAudio(b64));
+    live = { session, player, mic };
+    orb.classList.remove("busy"); orb.classList.add("on"); orb.textContent = "⏹";
+    statusEl.textContent = "connecting…";
+  } catch (e) {
+    orb.classList.remove("busy");
+    statusEl.textContent = "couldn't connect — is backend.py running on :8200?";
+    console.error(e);
+  }
+}
+
+function stopLive() {
+  if (!live) return;
+  live.session.close(); live.mic.stop(); live.player.close(); live = null;
+  orb.classList.remove("on", "busy"); orb.textContent = "🎤";
+}
+
+orb.onclick = () => live ? stopLive() : startLive();
+
+/* voice commands — same Web-Speech spotter shape prod uses */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let spotter = null;
+if (SR) {
+  spotter = new SR();
+  spotter.lang = "en-IN"; spotter.continuous = true; spotter.interimResults = true;
+  spotter.onresult = (e) => {
+    const t = e.results[e.results.length - 1][0].transcript.toLowerCase();
+    if (!live) return;
+    if (/(^|\s)(stop|ruk jao|band karo|bas)\b/.test(t)) live.player.interrupt();
+    else if (/(^|\s)(pause|hold on|ruko|theher)\b/.test(t)) live.player.ctx.suspend();
+    else if (/(^|\s)(resume|continue|aage bolo|chalu)\b/.test(t)) live.player.ctx.resume();
+  };
+  spotter.onend = () => { if (live) spotter.start(); };
+  spotter.start();
+}
+
+document.getElementById("askBtn").onclick = () => {
+  const q = askText.value.trim(); if (!q) return;
+  askText.value = "";
+  if (live) { say("you", q); live.session.sendText(q); }
+  else statusEl.textContent = "tap the mic first — typed questions need a live session";
+};
+askText.addEventListener("keydown", (e) => { if (e.key === "Enter") document.getElementById("askBtn").click(); });
+</script>
+</body>
+</html>

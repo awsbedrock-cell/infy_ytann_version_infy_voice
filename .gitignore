@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+dist/
+
+# Secrets — never commit
+.env
+*.key
+*.pem
+
+# Local runtime artifacts
+*.log
+*.db
+models/
+
+# Local debug / temp files
+dbg_*.py
+wo*.txt
+GONE
+
+# Experiment output
+spike_out/
+
+# Test artifacts
+tests/e2e/audio/
+tests/e2e/chrome-profile-*/
+tests/e2e/result_*.json
+tests/e2e/utterances/
+tests/e2e/results/
+tests/ws_turns_*.txt
+tests/bench_ttft_*.jsonl
+tests/rag_audit_out.json

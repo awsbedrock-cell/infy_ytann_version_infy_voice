@@ -1,0 +1,18 @@
+{"id": "in01", "type": "in", "lang": "en", "q": "what is a habitat", "gold": ["habitat"]}
+{"id": "in02", "type": "in", "lang": "en", "q": "what are the living and non living parts of a habitat", "gold": ["biotic", "abiotic"]}
+{"id": "in03", "type": "in", "lang": "en", "q": "what is the difference between a population and a community", "gold": ["population", "community"]}
+{"id": "in04", "type": "in", "lang": "en", "q": "how do plants make their own food", "gold": ["producer", "autotroph", "sunlight"]}
+{"id": "in05", "type": "in", "lang": "en", "q": "what happens to dead leaves and animals in a forest", "gold": ["decomposer", "saprotroph", "nutrient"]}
+{"id": "in06", "type": "in", "lang": "en", "q": "how is a food web different from a food chain", "gold": ["food web", "food chain"]}
+{"id": "in07", "type": "in", "lang": "en", "q": "why are consumers called heterotrophs", "gold": ["heterotroph", "consumer"]}
+{"id": "in08", "type": "in", "lang": "en", "q": "what would happen if all the frogs disappeared from a pond", "gold": ["food", "balance", "population"]}
+{"id": "hi01", "type": "in", "lang": "hi", "q": "आवास क्या होता है", "gold": ["habitat"]}
+{"id": "hi02", "type": "in", "lang": "hi", "q": "पौधे अपना भोजन कैसे बनाते हैं", "gold": ["producer", "food", "plant"]}
+{"id": "hi03", "type": "in", "lang": "hi", "q": "अपघटक क्या करते हैं", "gold": ["decomposer"]}
+{"id": "out01", "type": "out", "lang": "en", "q": "what is the capital of Japan", "gold": []}
+{"id": "out02", "type": "out", "lang": "en", "q": "what is the SI unit of density", "gold": []}
+{"id": "out03", "type": "out", "lang": "en", "q": "how do I check if two ratios are proportional", "gold": []}
+{"id": "out04", "type": "out", "lang": "en", "q": "what instrument measures wind speed", "gold": []}
+{"id": "out05", "type": "out", "lang": "en", "q": "who invented the telephone", "gold": []}
+{"id": "wp01", "type": "premise", "lang": "en", "q": "decomposers are harmful and useless for nature", "gold": ["decomposer", "nutrient"]}
+{"id": "wp02", "type": "premise", "lang": "en", "q": "sunlight and soil are living parts of a habitat", "gold": ["abiotic", "non-living"]}
