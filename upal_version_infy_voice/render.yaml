@@ -3,12 +3,16 @@
 # Sizing note: the local GGUF model (~2.5GB) does not fit on Render
 # free/entry plans — this runs the Gemini paths: VOICE_MODE=live plus
 # LLM_PROVIDER=gemini as cascade fallback. No model download needed.
+# The SQLite DB is seeded on first boot by the start command.
+#
+# Node note: Render's native Python runtime ships without node/npm, so the
+# build downloads a standalone Node 20 tarball to compile the Vite frontend.
 services:
   - type: web
-    name: infy-voice
+    name: ytann-infy-voice
     runtime: python
     plan: free
-    buildCommand: "cd frontend && npm ci && npx vite build && cd .. && pip install -r requirements-render.txt"
+    buildCommand: "curl -fsSL https://nodejs.org/dist/v20.18.0/node-v20.18.0-linux-x64.tar.xz -o /tmp/node.tar.xz && mkdir -p /tmp/node && tar -xJf /tmp/node.tar.xz -C /tmp/node --strip-components=1 && export PATH=/tmp/node/bin:$PATH && cd frontend && npm ci && npm run build && cd .. && pip install -r requirements-render.txt"
     startCommand: "test -f varad.db || python seed_db.py; python backend.py"
     healthCheckPath: /api/health
     envVars:
